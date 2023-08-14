@@ -1,0 +1,118 @@
+$--sev-critical: "#F236F6";
+$--sev-high: "#3443F4";
+$--sev-medium: "#1F2892";
+$--sev-low: "#16C0D7";
+$--sev-negligible: "#C5C5C5";
+$--sev-unknown: "#8C8C8C";
+
+[id^="rumble"] .search {
+  order: 5;
+  flex: 1;
+}
+
+[id^="rumble"] .search ul {
+  list-style: none;
+  height: 1rem;
+  float: right;
+  order: 3;
+}
+
+[id^="rumble"] .search ul li {
+  display: inline-flex;
+}
+
+[id^="rumble"] .search ul li input {
+  margin: 0 1.5rem 0 0;
+  height: 48px !important;
+  vertical-align: middle;
+  font-size: 16px;
+  padding: 0 1rem 0 2rem;
+
+  background: var(--info-icon-url) !important;
+  background-repeat: no-repeat !important;
+  background-color: #232323 !important;
+  background-position: 6px 13px !important;
+}
+
+
+
+[id^="rumble"] .search ul li select {
+  //margin: 0 2rem 0 -2rem;
+  padding: 0 0 0 1rem !important;
+  height: 48px !important;
+  vertical-align: middle;
+  min-width: 20%;
+  font-size: 16px;
+  float: right;
+  background: none;
+  border: 1px solid #4D4D4D;
+}
+
+.tables {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tables #segmentBackground {
+  position: absolute;
+  background: #232323;
+  width: 220px;
+  height: 48px;
+  z-index: -1;
+  border-radius: 100px;
+}
+
+.tables label {
+  order: 0; // Put the labels first
+  padding: 8px 16px 8px 16px;
+  background: none;
+  cursor: pointer;
+  border: none;
+  border-radius: 100px;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  height: 42px;
+  color: white;
+  margin: 3px -4px 0 4px;
+}
+
+.tables .tab-content {
+  order: 99; // Put the tabs last
+  width: 100%;
+  display: none;
+  background: none;
+}
+
+.tables table th {
+  font-weight: 500 !important;
+}
+
+.tables input[type="radio"] {
+  display: none;
+}
+
+.tables input[type="radio"]:checked+label {
+  background: #6772F7;
+}
+
+.tables input[type="radio"]:checked+label+.tab-content {
+  display: block;
+
+  table {
+    --bs-table-bg: none;
+
+    tbody {
+      border-top: none !important;
+    }
+  }
+
+}
+
+// remove info icon on vulnerability info pages
+blockquote::before {
+  content: none;
+}
