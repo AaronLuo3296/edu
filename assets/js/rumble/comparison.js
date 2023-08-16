@@ -79,6 +79,9 @@ function makeTable(id, sortedData, vulnIDs) {
             val = `<a href="/vulnerabilities/?id=${val}">${val}</a>`
           }
         }
+        if (column == "s") {
+          val = `<span style="color: ${severityColours[val]}; vertical-align: text-bottom; font-size: 0.75rem; padding: 0.5rem; ">⬤</span><span style="vertical-align: text-bottom; font-size: 1rem;">${val}</span>`
+        }
         return { column: column, value: val };
       });
     })
