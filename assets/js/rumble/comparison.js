@@ -2,8 +2,8 @@
 
 const image = document.location.pathname.replace("/vulnerability-info/", "").split("/").pop()
 const data = await d3.csv(`https://storage.googleapis.com/chainguard-academy/cve-data/${image}.csv`);
-const displayColumns = ["Package", "Vulnerability", "Severity"];
-const dataColumns = ["package", "vulnerability", "s"];
+const displayColumns = ["Package", "Version", "Vulnerability", "Severity"];
+const dataColumns = ["package", "version", "vulnerability", "s"];
 const dataSorted = sortData();
 
 makeTable("#rumble-images-external", dataSorted.theirs, dataSorted.theirVulns);

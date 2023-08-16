@@ -28,10 +28,10 @@ $--sev-unknown: "#8C8C8C";
   font-size: 16px;
   padding: 0 1rem 0 2rem;
 
-  background: var(--info-icon-url) !important;
+  background: var(--search-icon-url) !important;
   background-repeat: no-repeat !important;
-  background-color: #232323 !important;
-  background-position: 6px 13px !important;
+  background-color: var(--search-background) !important;
+  background-position: 10px 16px !important;
 }
 
 
@@ -44,7 +44,7 @@ $--sev-unknown: "#8C8C8C";
   min-width: 20%;
   font-size: 16px;
   float: right;
-  background: none;
+  background: var(--severity-background);
   border: 1px solid #4D4D4D;
 }
 
@@ -55,8 +55,8 @@ $--sev-unknown: "#8C8C8C";
 
 .tables #segmentBackground {
   position: absolute;
-  background: #232323;
-  width: 220px;
+  background: var(--segmented-button-background);
+  width: 222px;
   height: 48px;
   z-index: -1;
   border-radius: 100px;
@@ -76,8 +76,8 @@ $--sev-unknown: "#8C8C8C";
   letter-spacing: 0em;
   text-align: left;
   height: 42px;
-  color: white;
-  margin: 3px -4px 0 4px;
+  color: var(--segmented-button-color);
+  margin: 3px -4px 1rem 4px;
 }
 
 .tables .tab-content {
@@ -85,10 +85,23 @@ $--sev-unknown: "#8C8C8C";
   width: 100%;
   display: none;
   background: none;
+  table-layout: fixed;
 }
 
 .tables table th {
   font-weight: 500 !important;
+  position: sticky;
+  top: 0;
+  background: var(--table-row-hover-background);
+}
+
+// TODO fix
+.tables table thead tr {
+  border-bottom: 1px solid var(--table-row-border-color) !important;
+}
+
+.tables table tbody tr:hover {
+  background: var(--table-row-hover-background);
 }
 
 .tables input[type="radio"] {
@@ -97,19 +110,38 @@ $--sev-unknown: "#8C8C8C";
 
 .tables input[type="radio"]:checked+label {
   background: #6772F7;
+  color: white;
 }
 
 .tables input[type="radio"]:checked+label+.tab-content {
   display: block;
 
   table {
-    --bs-table-bg: none;
+    --bs-table-bg: var(--table-row-background);
+    border-collapse: separate;
+    border-spacing: 0px;
 
     tbody {
       border-top: none !important;
-    }
-  }
 
+      tr td {
+
+        color: var(--table-vulnerability-color);
+        border-left: 1px solid var(--table-row-background) !important;
+        border-right: 1px solid var(--table-row-background) !important;
+
+        &:hover {
+          background: var(--table-row-hover-background);
+          border-right: 1px solid var(--table-row-border-color) !important;
+          border-left: 1px solid var(--table-row-border-color) !important;
+
+        }
+
+      }
+
+    }
+
+  }
 }
 
 // remove info icon on vulnerability info pages
