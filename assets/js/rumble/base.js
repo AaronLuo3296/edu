@@ -12,16 +12,20 @@ const severityColours = {
 
 // used on image comparison and vulnerability info page search fields
 const searchFilter = document.querySelector("#filterInput");
+const severityPicker = document.querySelector("#severity-picker");
 searchFilter.value = null;
 searchFilter.addEventListener("keyup", () => {
-    filterTable("rumble-images-external");
-    filterTable("rumble-images-chainguard");
+    let filter = document.getElementById("filterInput").value.toLowerCase();
+    filterTable("rumble-images-external", filter);
+    filterTable("rumble-images-chainguard", filter);
+    if (severityPicker != null) {
+        severityPicker.querySelector("label span").innerHTML = `<span>Severity<span class="bi-chevron-down" style="padding-left: 2rem;"></span></span>`;
+    }
 });
 
 // taken from https://www.delftstack.com/howto/javascript/javascript-filter-table/
-function filterTable(tableId) {
-    var filter, table, tr, i, j;
-    filter = document.getElementById("filterInput").value.toLowerCase();
+function filterTable(tableId, filter) {
+    var table, tr, i, j;
     table = document.getElementById(tableId);
     tr = table.getElementsByTagName("tr");
     for (i = 1; i < tr.length; i++) {

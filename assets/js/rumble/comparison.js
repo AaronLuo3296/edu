@@ -51,7 +51,7 @@ function makeTable(id, sortedData, vulnIDs) {
       return displayColumns.map(function (column) {
         if (column == "Vulnerability") {
           let count = vulnIDs.length;
-          column = `Vulnerability [${count}]`
+          column = `ID [${count} unique]`
         }
         return column;
       })
@@ -101,3 +101,28 @@ function getEnvUrl() {
     return true
   }
 };
+
+severityPicker.addEventListener("click", function (event) {
+  if (event.target.tagName == "INPUT" || event.target.tagName == "LABEL") {
+    return;
+  }
+  severityPicker.querySelector(".dropdown-content").visiblity = "hidden";
+  severityPicker.querySelector('input[type = "checkbox"]').checked = false;
+
+  let filter = event.target.dataset.severity.toLowerCase();
+  filterTable("rumble-images-external", filter);
+  filterTable("rumble-images-chainguard", filter);
+
+  if (event.target.dataset.severity == "") {
+    severityPicker.querySelector("label span").innerHTML = `<span>Severity<span class="bi-chevron-down" style="padding-left: 2rem;"></span></span>`;
+    return;
+  }
+
+  severityPicker.querySelector("label span").innerHTML = `<span data-severity="${event.target.dataset.severity}"><span class="severity sev-${event.target.dataset.severity.toLowerCase()}"
+  data-severity="${event.target.dataset.severity}">⬤</span>${event.target.dataset.severity}<span class="bi-chevron-down"></span></span>`;
+  searchFilter.value = null;
+});
+severityPicker.addEventListener("mouseleave", function (event) {
+  severityPicker.querySelector(".dropdown-content").visiblity = "hidden";
+  severityPicker.querySelector('input[type = "checkbox"]').checked = false;
+});
