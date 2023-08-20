@@ -13,13 +13,13 @@ $sev-unknown: #8C8C8C;
 [id^="rumble"] .search {
   order: 5;
   flex: 1;
-  margin-bottom: 1rem;
 }
 
 [id^="rumble"] .search ul {
   list-style: none;
   height: 1rem;
   float: right;
+  margin: 0;
 }
 
 [id^="rumble"] .search ul li {
@@ -43,6 +43,7 @@ $sev-unknown: #8C8C8C;
 .tables {
   display: flex;
   flex-wrap: wrap;
+  margin-top: 42px;
 }
 
 // empty span, used as the background for segmented button
@@ -70,7 +71,7 @@ $sev-unknown: #8C8C8C;
   text-align: left;
   height: 42px;
   color: var(--segmented-button-color);
-  margin: 3px -4px 1rem 4px;
+  margin: 3px -4px 0 4px;
 }
 
 // needed since tables and labels are intermixed in the DOM
@@ -81,6 +82,7 @@ $sev-unknown: #8C8C8C;
   display: none;
   background: none;
   table-layout: fixed;
+  margin: 48px 0 0 0 !important;
 }
 
 // make table headings stick when scrolling
@@ -88,7 +90,7 @@ $sev-unknown: #8C8C8C;
   font-weight: 500 !important;
   position: sticky;
   top: 0;
-  background: var(--table-row-hover-background);
+  background: var(--table-row-background);
 }
 
 .tables table thead tr {
@@ -113,27 +115,37 @@ $sev-unknown: #8C8C8C;
   display: block;
 
   table {
-    --bs-table-bg: var(--table-row-background);
+    --bs-table-bg: none;
     border-collapse: separate;
     border-spacing: 0px;
+    margin: 0 !important;
 
     tbody {
       border-top: none !important;
 
-      tr td {
+      tr {
         color: var(--table-vulnerability-color);
-        border-left: 1px solid var(--table-row-background) !important;
-        border-right: 1px solid var(--table-row-background) !important;
+        //border-left: 1px solid var(--table-row-background) !important;
+        //border-right: 1px solid var(--table-row-background) !important;
 
         // add borders on hover to show where cursor is
         &:hover {
           background: var(--table-row-hover-background);
-          border-right: 1px solid var(--table-row-border-color) !important;
-          border-left: 1px solid var(--table-row-border-color) !important;
+          //border-right: 1px solid var(--table-row-border-color) !important;
+          //border-left: 1px solid var(--table-row-border-color) !important;
+        }
+
+        td a {
+          color: var(--table-vulnerability-color);
         }
       }
     }
   }
+}
+
+// only comparison page table rows are links
+#rumble .tables table tbody tr:hover {
+  cursor: pointer;
 }
 
 // remove info icon on vulnerability info pages
@@ -146,12 +158,12 @@ blockquote::before {
   padding: 0 0 0 1rem !important;
   height: 48px !important;
   width: 160px;
-  //float: right;
   background: var(--severity-background);
   border: 1px solid var(--severity-border);
   position: relative;
   border-radius: 4px;
   margin: 0 !important;
+  top: -2px;
 
   .bi-chevron-down {
     position: absolute;
@@ -168,26 +180,32 @@ blockquote::before {
   // coloured circles in dropdown menu
   .sev-critical {
     color: $sev-critical;
+    font-size: 8px;
   }
 
   .sev-high {
     color: $sev-high;
+    font-size: 8px;
   }
 
   .sev-medium {
     color: $sev-medium;
+    font-size: 8px;
   }
 
   .sev-low {
     color: $sev-low;
+    font-size: 8px;
   }
 
   .sev-negligible {
     color: $sev-negligible;
+    font-size: 8px;
   }
 
   .sev-unknown {
     color: $sev-unknown;
+    font-size: 8px;
   }
 
   // severity dropdown button

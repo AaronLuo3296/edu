@@ -80,7 +80,7 @@ function makeTable(id, sortedData, vulnIDs) {
           }
         }
         if (column == "s") {
-          val = `<span style="color: ${severityColours[val]}; vertical-align: text-bottom; font-size: 0.75rem; padding: 0.5rem; ">⬤</span><span style="vertical-align: text-bottom; font-size: 1rem;">${val}</span>`
+          val = `<span style="color: ${severityColours[val]}; vertical-align: text-bottom; font-size: 8px; padding: 0.5rem; ">⬤</span><span style="vertical-align: text-bottom; font-size: 1rem;">${val}</span>`
         }
         return { column: column, value: val };
       });
@@ -126,3 +126,13 @@ severityPicker.addEventListener("mouseleave", function (event) {
   severityPicker.querySelector(".dropdown-content").visiblity = "hidden";
   severityPicker.querySelector('input[type = "checkbox"]').checked = false;
 });
+
+const tds = document.querySelectorAll("#rumble .tables table tbody tr td");
+tds.forEach(function (td) {
+  let href = td.parentNode.childNodes[2].childNodes[0].href;
+
+  td.addEventListener("click", function () {
+    document.location = href;
+  });
+
+})

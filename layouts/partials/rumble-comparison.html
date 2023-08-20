@@ -38,16 +38,27 @@
           <input class="form-control is-search" type="search" id="filterInput"
             placeholder="Search packages and vulnerabilities" size="25" />
         </li>
-        <li>
-          <select id="severity" class="form-control" style="width: 200px;">
-            <option value="">Severity </option>
-            <option value="critical">Critical</option>
-            <option value="high">High</option>
-            <option value="medium">Medium</option>
-            <option value="low">Low</option>
-            <option value="negligible">Negligible</option>
-            <option value="unknown">Unknown</option>
-          </select>
+        <li id="severity-picker">
+          <input id="dropdown" type="checkbox" autocomplete="off" />
+          <label for="dropdown" class="dropdown-btn">
+            <span>Severity<span class="bi-chevron-down"></span></span>
+          </label>
+
+          <ul class="dropdown-content">
+            <li data-severity="Critical"><span data-severity="Critical"><span class="severity sev-critical"
+                  data-severity="Critical">⬤</span>Critical</span></li>
+            <li data-severity="High"><span data-severity="High"><span class="severity sev-high"
+                  data-severity="High">⬤</span>High</span></li>
+            <li data-severity="Medium"><span data-severity="Medium"><span class="severity sev-medium"
+                  data-severity="Medium">⬤</span>Medium</span></li>
+            <li data-severity="Low"><span data-severity="Low"><span class="severity sev-low"
+                  data-severity="Low">⬤</span>Low</span></li>
+            <li data-severity="Negligible"><span data-severity="Negligible"><span class="severity sev-negligible"
+                  data-severity="Negligible">⬤</span>Negligible</span></li>
+            <li data-severity="Unknown"><span data-severity="Unknown"><span class="severity sev-unknown"
+                  data-severity="Unknown">⬤</span>Unknown</span></li>
+            <li data-severity=""><span data-severity="">Clear</span></li>
+          </ul>
         </li>
       </ul>
     </form>
