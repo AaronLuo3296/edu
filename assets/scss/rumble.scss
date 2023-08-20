@@ -27,7 +27,7 @@ $sev-unknown: #8C8C8C;
 }
 
 [id^="rumble"] .search ul li input {
-  margin: 0 1.5rem 0 0;
+  margin: 0;
   min-width: 160px;
   height: 48px !important;
   vertical-align: middle;
@@ -82,7 +82,7 @@ $sev-unknown: #8C8C8C;
   display: none;
   background: none;
   table-layout: fixed;
-  margin: 48px 0 0 0 !important;
+  margin: 42px 0 0 0 !important; //
 }
 
 // make table headings stick when scrolling
@@ -162,7 +162,7 @@ blockquote::before {
   border: 1px solid var(--severity-border);
   position: relative;
   border-radius: 4px;
-  margin: 0 !important;
+  margin: 0 0 0 1.5rem !important;
   top: -2px;
 
   .bi-chevron-down {
