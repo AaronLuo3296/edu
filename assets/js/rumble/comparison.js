@@ -1,6 +1,7 @@
-// used on an image's vulnerability-info page
+// used on an image's vulnerability comparison page
 
-const image = document.location.pathname.replace("/vulnerability-info/", "").split("/").pop()
+const image = document.location.pathname.replace(/\/$/, "").split("/").pop();
+console.log(image);
 const data = await d3.csv(`https://storage.googleapis.com/chainguard-academy/cve-data/${image}.csv`);
 const displayColumns = ["Package", "Version", "Vulnerability", "Severity"];
 const dataColumns = ["package", "version", "vulnerability", "s"];
