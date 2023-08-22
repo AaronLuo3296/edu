@@ -61,6 +61,8 @@ function makeTable(id, sortedData, vulnIDs) {
     .append("th")
     .text(function (column) { return column; });
 
+
+
   // create a row for each object in the data
   var rows = tbody.selectAll("tr")
     .data(sortedData)
@@ -81,7 +83,7 @@ function makeTable(id, sortedData, vulnIDs) {
           }
         }
         if (column == "s") {
-          val = `<span style="color: ${severityColours[val]}; vertical-align: text-bottom; font-size: 8px; padding: 0.5rem; ">⬤</span><span style="vertical-align: text-bottom; font-size: 1rem;">${val}</span>`
+          val = `<span style="color: ${severityColours[val]}; vertical-align: text-bottom; font-size: 8px; padding: 0.5rem; ">⬤</span><span style="vertical-align: text-bottom;">${val}</span>`
         }
         return { column: column, value: val };
       });
@@ -89,6 +91,11 @@ function makeTable(id, sortedData, vulnIDs) {
     .enter()
     .append("td")
     .html(function (d) { return d.value; });
+
+  if (vulnIDs.length == 0) {
+    document.querySelector(id).insertAdjacentHTML("beforeend", `<p style="margin: 0; padding: 24px 8px;">No vulnerabilities detected</p>`);
+    return;
+  }
 };
 
 // toggles between absolute and ?id= URLs for each page when rendering table links
@@ -120,11 +127,11 @@ severityPicker.addEventListener("click", function (event) {
   }
 
   severityPicker.querySelector("label span").innerHTML = `<span data-severity="${event.target.dataset.severity}"><span class="severity sev-${event.target.dataset.severity.toLowerCase()}"
-  data-severity="${event.target.dataset.severity}">⬤</span>${event.target.dataset.severity}<span class="bi-chevron-down"></span></span>`;
+  data-severity="${event.target.dataset.severity}">⬤</span>${event.target.dataset.severity}</span>`;
   searchFilter.value = null;
 });
 severityPicker.addEventListener("mouseleave", function (event) {
-  severityPicker.querySelector(".dropdown-content").visiblity = "hidden";
+  // severityPicker.querySelector(".dropdown-content").visiblity = "hidden";
   severityPicker.querySelector('input[type = "checkbox"]').checked = false;
 });
 

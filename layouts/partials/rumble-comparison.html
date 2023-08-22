@@ -35,8 +35,8 @@
     <form class="search">
       <ul>
         <li>
-          <input class="form-control is-search" type="search" id="filterInput"
-            placeholder="Search packages and vulnerabilities" size="25" />
+          <input class="form-control is-search" id="filterInput" placeholder="Search packages and vulnerabilities"
+            size="25" />
         </li>
         <li id="severity-picker">
           <input id="dropdown" type="checkbox" autocomplete="off" />
@@ -45,6 +45,7 @@
           </label>
 
           <ul class="dropdown-content">
+            <li data-severity=""><span data-severity="">View all</span></li>
             <li data-severity="Critical"><span data-severity="Critical"><span class="severity sev-critical"
                   data-severity="Critical">⬤</span>Critical</span></li>
             <li data-severity="High"><span data-severity="High"><span class="severity sev-high"
@@ -57,7 +58,6 @@
                   data-severity="Negligible">⬤</span>Negligible</span></li>
             <li data-severity="Unknown"><span data-severity="Unknown"><span class="severity sev-unknown"
                   data-severity="Unknown">⬤</span>Unknown</span></li>
-            <li data-severity=""><span data-severity="">Clear</span></li>
           </ul>
         </li>
       </ul>
